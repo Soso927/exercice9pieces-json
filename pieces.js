@@ -9,7 +9,7 @@ for (let i = 0; i < pieces.length; i++) {
     // Récupération de l'élément du DOM qui accueillera les fiches
     const sectionFiches = document.querySelector(".fiches");
     // Création d’une balise dédiée à une pièce automobile
-
+    const pieceElement = document.createElement("article");
     // Création des balises 
     const imageElement = document.createElement("img");
     imageElement.src = article.image;
@@ -27,7 +27,7 @@ for (let i = 0; i < pieces.length; i++) {
     piecesdescription.innerText = article.description ?? "Description non disponible";
     
     // On rattache la balise article a la section Fiches
-    // sectionFiches.appendChild(pieceElement);
+    sectionFiches.appendChild(pieceElement);
     // On rattache l’image à pieceElement (la balise article)
     pieceElement.appendChild(imageElement);
     //Rattachement de nos balises au DOM
@@ -67,3 +67,11 @@ boutondescription.addEventListener("click", function(){
     });
     console.log(piecesfiltre);
 });
+
+boutonDecroissant.addEventListener("click", function(){
+    const pieceordonnes = Array.from(pieces);
+    pieceordonnes.sort(function (a,b){
+        return b.prix - a.prix;
+    });
+    console.log(pieceordonnes);
+})
